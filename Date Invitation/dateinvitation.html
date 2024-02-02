@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Background style for the webpage */
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('data/b1.png');
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      background-size: cover;
+      font-family: 'Pacifico', cursive;
+    }
+
+    .question-box {
+      background-color: rgba(255, 192, 203, 0.6);
+      border: 2px solid #c71585;
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 5px;
+      font-family: 'Pacifico', cursive;
+      font-size: 20px;
+      position: absolute;
+      top: 25%;
+      transform: translateY(-50%);
+      width: 25%;
+      z-index: 0;
+      color: white;
+    }
+
+    #movableButton {
+      position: absolute;
+      left: 820px;
+      top: 550px;
+      padding: 12px 25px;
+      font-size: 25px;
+      background-color: #FF69B4;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      border-radius: 20px;
+      z-index: 1;
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+      transition: 1s;
+    }
+
+    .button-container {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+
+    .button {
+      padding: 12px 25px;
+      font-size: 25px;
+font-family: 'Pacifico', cursive;
+      cursor: pointer;
+      border: none;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .button-yes {
+      background-color: #FF69B4;
+      margin-right: 200px;
+    }
+
+    img {
+      max-width: 40%;
+      height: 64%;
+      filter: brightness(100%) contrast(100%) blur(0.3px);
+      border-radius: 20px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.8);
+      position: absolute;
+      z-index: -1;
+    }
+
+    .centered-gif {
+      max-width: 300px;
+      max-height: 250px;
+      margin: 10px;
+      border-radius: 20px;
+      box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+      position: absolute;
+      z-index: -1;
+      transition: 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.pinimg.com/564x/2a/93/a0/2a93a0f4a05b0b2dee68345433ba4fcc.jpg" alt="Centered Image">
+  <img class="centered-gif" id="gifImage" src="https://cdn.pixabay.com/photo/2023/02/10/11/10/valentine-7780665_1280.png" alt="Centered GIF">
+  <div class="question-box">
+    Would you like to go on a date with me?
+  </div>
+  <div class="button-container">
+    <button class="button button-yes" onclick="nextPage()" onmouseenter="resetGif()">YES</button>
+  </div>
+
+  <!-- Movable button element -->
+  <button id="movableButton" onmouseover="moveButton()" onmouseenter="changeGif()">NO</button>
+
+  <script>
+function nextPage() {
+  // Define the logic to execute when the "YES" button is clicked
+  // Add your redirection code here
+  window.location.href = 'Data/Date.html';
+}
+
+function moveButton() {
+  var button = document.getElementById('movableButton');
+  var newX = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+  var newY = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+  button.style.left = newX + 'px';
+  button.style.top = newY + 'px';
+}
+
+var gifChangeTimeout;
+
+function changeGif() {
+  // Clear any existing timeout to avoid glitches
+  clearTimeout(gifChangeTimeout);
+
+  // Add a delay of 2 seconds before changing the GIF
+  gifChangeTimeout = setTimeout(function () {
+    var gifImage = document.getElementById('gifImage');
+    gifImage.src = 'Data/gif2.gif'; // Replace 'NEW_GIF_URL' with the URL of the new GIF
+  }, 1000); // 2000 milliseconds = 2 seconds
+}
+
+function resetGif() {
+  // Clear the timeout to avoid changing the GIF after moving away from the "YES" button
+  clearTimeout(gifChangeTimeout);
+
+  // Reset the source of the GIF when the cursor moves over the "YES" button
+  var gifImage = document.getElementById('gifImage');
+  gifImage.src = 'Data/gif.gif';
+}
+
+// Add mouseover event listener to the "YES" button
+document.querySelector('.button-yes').addEventListener('mouseover', function () {
+  // Call the change function when the cursor enters the "YES" button
+  changeGif();
+});
+
+// Add mouseout event listener to the "YES" button
+document.querySelector('.button-yes').addEventListener('mouseout', function () {
+  // Call the reset function when the cursor moves away from the "YES" button
+  resetGif();
+});
+  </script>
+
+</body>
+</html>

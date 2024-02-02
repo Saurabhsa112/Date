@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Corrected path to Font Awesome CSS -->
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="main.css"/>
+    <title>ASK for movie date</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Movie Date</a>
+    </header>
+    <div class="banner">
+        <div class="content one active">
+            <h4>
+                <span>2023</span><span>NA</span><span>Animation, Action, Adventure, Comedy</span>
+            </h4>
+            <p>
+                After Po is tapped to become the Spiritual Leader of the Valley of Peace, he needs to find and train a new Dragon Warrior, while a wicked sorceress plans to re-summon all the master villains whom Po has vanquished to the spirit realm.
+            </p>
+            <div class="button">
+                <a href="Kungfupanda4.html"><i class="fa fa-play" aria-hidden="true"></i>Click to fix date</a>
+            </div>
+        </div>
+        <div class="content two">
+            <h4>
+                <span>2024</span><span>2h 46min</span><span>Action, Adventure, Drama</span>
+            </h4>
+            <p>
+                Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.
+            </p>
+            <div class="button">
+                <a href="DUNE.html"><i class="fa fa-play" aria-hidden="true"></i>Click to fix date</a>
+            </div>
+        </div>
+        <div class="content three">
+            <h4>
+                <span>2024</span><span>2h 47min</span><span>Action, Thriller</span>
+            </h4>
+            <p>
+                Top IAF aviators come together in the face of imminent danger, to form Air Dragons. FIGHTER unfolds their camaraderie, brotherhood and battles, internal and external.
+            </p>
+            <div class="button">
+                <a href="fighter.html"><i class="fa fa-play" aria-hidden="true"></i>Click to fix date</a>
+            </div>
+        </div>
+        <div class="content four">
+            <h4>
+                <span>2024</span><span>2h 38min</span><span>Action, Adventure, Fantasy</span>
+            </h4>
+            <p>
+                An imaginary place called Anjanadri where the protagonist gets the powers of Hanuman and fights for Anjanadri.
+            </p>
+            <div class="button">
+                <a href="hanuman.html"><i class="fa fa-play" aria-hidden="true"></i>Click to fix date</a>
+            </div>
+        </div>
+        <div class="carousel-box">
+            <div class="carousel">
+                <div class="carousel-item" onclick="changeBg('kungfu.jpg', 'one');">
+                    <img src="Kungfupanda.jpg" alt="">
+                </div>
+                <div class="carousel-item" onclick="changeBg('dunepart.jpg', 'two');">
+                    <img src="dune.jpg" alt="">
+                </div>
+                <div class="carousel-item" onclick="changeBg('fighter.jpg', 'three');">
+                    <img src="fight.jpg" alt="">
+                </div>
+                <div class="carousel-item" onclick="changeBg('hanuman.jpg', 'four');">
+                    <img src="hanu.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Corrected script tag for jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+          $(document).ready(function(){
+            $('.carousel').carousel();
+          });
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Pacifico', cursive;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: hidden;
+        }
+
+        .bg {
+            position: absolute;
+background-size: 100% 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fc4a55;
+            transition: background 0.8s ease-in-out;
+            background-position: center;
+            background-size: cover;
+            opacity: 0;
+            animation: fadeInBackground 2.5s forwards 1.5s; /* Delayed background fade-in */
+        }
+
+        @keyframes fadeInBackground {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            position: absolute;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInContent 5s forwards 3s; /* Delayed content fade-in */
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content .textbox {
+    position: absolute;
+    width: 80%;
+    display: flex;
+    flex-direction: column; /* Added to stack headings vertically */
+    justify-content: center;
+    opacity: 0.7;
+    animation: fadeInContent 5s forwards 3s; /* Delayed content fade-in */
+}
+
+.content .textbox .heading,
+.content .textbox .sub-heading {
+    text-align: center; /* Center-align headings */
+}
+
+.content .textbox h2,
+.content .textbox h3 {
+    color: black;
+    font-size: 2.3em;
+    line-height: 0.8em;
+    font-weight: 800;
+}
+
+.content .textbox .sub-heading {
+    margin-top: 10px; /* Adjust the spacing between headings */
+}
+
+        .thumb {
+            position: absolute;
+            left: 10%;
+            top: 10%;
+            bottom: 20px;
+            display: grid;
+        }
+
+        .thumb li {
+            list-style: none;
+            display: inline-block;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: 0.5s ease-in-out;
+            height: 150px;
+            width: 150px;
+            background-color: rgba(255, 255, 255, 0.25);
+            padding: 3px;
+            border: 4px solid #fff;
+            border-radius: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInThumb 5s forwards 7s; /* Delayed thumbnail fade-in */
+        }
+
+        @keyframes fadeInThumb {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thumb li.active {
+            border: 4px solid rgb(219 252 77);
+        }
+
+        .thumb li:hover {
+            filter: brightness(100%);
+        }
+
+        .thumb li::before {
+            top: 0;
+            position: absolute;
+            top: 5px;
+            left: 160px;
+            content: attr(data-text);
+            font-size: 40px;
+            color: #fff;
+            opacity: 0;
+            font-weight: 700;
+            pointer-events: none;
+            transition: 1.5s ease-in-out;
+        }
+
+        .thumb2 li::before {
+            left: -130px;
+            right: 100px;
+        }
+
+        .thumb li.active::before {
+            opacity: 1;
+        }
+
+        .thumb li img {
+            max-width: 135px;
+            border-radius: 12px;
+        }
+
+        .thumb2 {
+            left: unset;
+            right: 10%;
+        }
+
+        @media (max-width: 1200px) {
+            .thumb li {
+                position: unset;
+            }
+
+            .thumb li::before {
+                top: -100px;
+                left: 70px;
+                font-size: 10px;
+            }
+
+            .thumb2 li::before {
+                left: unset;
+                right: 70px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bg {
+                background-position: top -50px center;
+            }
+
+            .thumb {
+                top: unset;
+                left: 0;
+            }
+
+            .thumb li {
+                margin-bottom: 5px;
+            }
+
+            .thumb li::before {
+                top: unset;
+                bottom: 0;
+                left: 1r0px;
+                font-size: 10px;
+            }
+
+            .thumb2 {
+                left: 160px;
+                right: 160px;
+            }
+
+            .thumb2 li::before {
+                left: 140px;
+                right: 20px;
+                bottom: 0;
+                top: unset;
+                margin: 0 auto;
+            }
+        }
+        .gif-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            opacity: 0;
+            animation: fadeInGif 6s forwards 3s, fadeOutGif 8s forwards 12s; /* Delayed GIF fade-in and fade-out */
+        }
+
+        @keyframes fadeInGif {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeOutGif {
+            from {
+                opacity: 0.8;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    body.disable-pointer-events * {
+        pointer-events: none !important;
+    }
+    </style>
+</head>
+<body>
+
+<section>
+    <div class="bg" style="background-image: url(Main.jpg);">
+        <ul class="thumb">
+            <li data-text="Coffee Date" onmouseenter="changeBgImage('Coffee.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTRmODdjNzA1MWM4ZTliNCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTcwNTg4MTYwMH0.n6ditOlGbnGuG-bKdjUIQoyD3Uqtf72pznNKkFZLJn4')">
+                <img src="https://th.bing.com/th/id/OIG.JiN9_lPCW1WCYMqjeYgE?pid=ImgGn">
+            </li>
+            <li data-text="Lunch Date" onmouseenter="changeBgImage('Lunch.jpg')">
+                <img src="https://th.bing.com/th/id/OIG.0xYYnV7QMnj6xXfyJF5m?w=1024&h=1024&rs=1&pid=ImgDetMain">
+            </li>
+            <li data-text="Dinner Date" onmouseenter="changeBgImage('Dinner.jpeg')">
+                <img src="https://th.bing.com/th/id/OIG.LsP63wG2rPhOAq9uwwY5?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn">
+            </li>
+        </ul>
+
+        <ul class="thumb thumb2">
+            <li data-text="Movie Date" onmouseenter="changeBgImage('Movie.jpg?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMGU5ZWYzMjE3YzVmNTEyYSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTcwNTg4MTYwMH0.twgNdnlwSiARKk3a1QbCiJEZE-Vi0RXvtx5k8YO72zk')">
+                <img src="https://th.bing.com/th/id/OIG1.mCInUBoZNagbGmJTKK5X?w=1024&h=1024&rs=1&pid=ImgDetMain">
+            </li>
+            <li data-text="ZOO Date" onmouseenter="changeBgImage('zoo.jpg')">
+                <img src="https://th.bing.com/th/id/OIG3.n29YHRuIaIMxn6_HQ1EL?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn">
+            </li>
+            <li data-text="Your choice of Date" onmouseenter="changeBgImage('star.jpg')">
+                <img src="https://th.bing.com/th/id/OIG4.3zVsnMy7p256XAdLiSW9?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn">
+            </li>
+        </ul>
+        <div class="gif-container">
+            <img class="gif" src="1.webp" alt="Animated GIF">
+        </div>
+    </div>
+    <div class="content">
+        <div class="textbox">
+            <div class="heading">
+                <h2><br><br><br><br><br><br><br>Yeyyyyyyyy!</h2>
+            </div>
+            <div class="sub-heading">
+                <h3><br>LET'S PLAN SOMETHING SPECIAL</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+       function changeBgImage(urlString) {
+            const bg = document.querySelector('.bg');
+            bg.style.backgroundImage = `url('${urlString}')`;
+        }
+
+        function showDataText(text) {
+            const textElement = document.querySelector('.thumb li.active::before');
+            textElement.textContent = text;
+        }
+
+        function hideDataText() {
+            const activeLi = document.querySelector('.thumb li.active');
+            if (activeLi) {
+                activeLi.classList.remove('active');
+            }
+        }
+
+        // Function to handle button clicks and redirect
+        function handleButtonClick(pageName) {
+            const pageURL = `${pageName}.html`;
+            window.location.href = pageURL;
+        }
+
+        // Add event listeners to each button
+        let el = document.querySelectorAll('.thumb li');
+        for (let i = 0; i < el.length; i++) {
+            el[i].addEventListener('mouseenter', function () {
+                el.forEach((item) => item.classList.remove('active'));
+                el[i].classList.add('active');
+                const dataText = el[i].getAttribute('data-text');
+                showDataText(dataText);
+            });
+
+            // Add click event listener to each button
+            el[i].addEventListener('click', function () {
+                const dataText = el[i].getAttribute('data-text');
+                handleButtonClick(dataText);
+            });
+        }
+
+    // Add a class to the body initially to disable pointer events
+    document.body.classList.add('disable-pointer-events');
+
+    // Remove the class after 14 seconds to enable pointer events
+    setTimeout(function() {
+        document.body.classList.remove('disable-pointer-events');
+    }, 12000);
+setTimeout(function() {
+    const gifContainer = document.querySelector('.gif-container');
+    gifContainer.style.opacity = 0; // Optional: Fade out the gif container before removal
+    setTimeout(function() {
+        gifContainer.parentNode.removeChild(gifContainer);
+    }, 1000); // Wait for the fade-out animation to complete (1s in this example)
+}, 30000);
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create This Cool Hover Effect | HTML & CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lemon';
+            background: #fff;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* Align items at the bottom */
+            flex-flow: row wrap;
+            height: 100vh;
+        }
+
+        .inner {
+            width: 33.333333%;
+            background: #000;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: .5s;
+            order: 1; /* Initial order */
+            box-shadow: 0 0 20px rgba(102, 204, 255, 1); 
+        }
+        .inner a {
+            width: 100%; /* Make the anchor take up the full width and height of .inner */
+            height: 100%;
+            display: block; /* Make it a block-level element to cover the entire .inner */
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit text color from parent */
+        }
+
+        .inner h2 {
+            color: #66ccff;
+            font-size: 50px;
+            position: absolute;
+            bottom: 30px;
+            margin: 0;
+        }
+
+        .inner p {
+            color: #66ccff;
+            font-size: 35px;
+            position: absolute;
+            bottom: 60px;
+        }
+
+        .inner-content {
+            border: 3px solid #ffe6ff;
+            padding: 30px 20px 30px 20px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .chaisuttabar:hover {
+            background: url('chai2.jpg') center/cover;
+        }
+
+        .march:hover {
+            background: url('March.jpg') center/cover;
+        }
+
+        .mba:hover {
+            background: url('MBA.jpg') center/cover;
+        }
+
+        .inner:hover .icon i {
+            transform: rotate(-50deg);
+        }
+
+        .inner:hover img {
+            opacity: 1;
+            bottom: 20px; 
+        }
+
+        .inner:hover h2 {
+            color: #fff;
+        }
+
+        .inner:hover p {
+            color: #fff;
+        }
+
+        @media (max-width: 769px) {
+            .main {
+                height: 100%;
+            }
+
+            .inner {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .inner {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="inner chaisuttabar">
+           <a href="Chai sutta bar.html">
+            <div class="inner-content">
+                <div class="content">
+                    <h2>01</h2>
+                    <p>CHAI SUTTA BAR</p>
+                </div>
+            </div>
+           </a>
+        </div>
+
+        <div class="inner march">
+           <a href="March 15 cafe.html">
+            <div class="inner-content">
+                <div class="content">
+                    <h2>02</h2>
+                    <p>MARCH 15 CAFE</p>
+                </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="inner mba">
+          <a href="MBA chai wala.html">
+            <div class="inner-content">
+                <div class="content">
+                    <h2>03</h2>
+                    <p>MBA CHAI WALA</p>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>
+
+</body>
+</html>

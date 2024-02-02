@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUKET Puzzle Adventure</title>
+</head>
+<body>
+
+<h1>Welcome to the CUKET Puzzle Adventure!</h1>
+
+<!-- Maze Puzzle -->
+<section>
+    <h2>Maze Puzzle</h2>
+    <p>Find your way through the maze to reveal a question:</p>
+    <img src="maze_image.jpg" alt="Maze Image">
+    <p><strong>Question 1:</strong> What is the first letter of the word that means a green vegetable?</p>
+    <input type="text" id="mazeAnswer" placeholder="Your Answer">
+    <button onclick="checkMazeAnswer()">Submit</button>
+</section>
+
+<!-- Crossword Puzzle -->
+<section id="crosswordSection" style="display: none;">
+    <h2>Crossword Puzzle</h2>
+    <p>Complete the crossword using the answer from the maze:</p>
+    <!-- Crossword grid goes here -->
+    <p><strong>Question 2:</strong> Opposite of "no" (2 letters)</p>
+    <input type="text" id="crosswordAnswer1" placeholder="Your Answer">
+    <!-- Repeat similar structure for other questions -->
+    <button onclick="checkCrosswordAnswers()">Submit</button>
+</section>
+
+<!-- Word Search -->
+<section id="wordSearchSection" style="display: none;">
+    <h2>Word Search</h2>
+    <p>Find the remaining letters in the word search and unscramble them:</p>
+    <!-- Word search grid goes here -->
+    <p><strong>Question 6:</strong> Unscramble the letters to reveal the name of a popular beverage.</p>
+    <input type="text" id="wordSearchAnswer" placeholder="Your Answer">
+    <button onclick="checkWordSearchAnswer()">Submit</button>
+</section>
+
+<!-- Cryptic Clues -->
+<section id="crypticCluesSection" style="display: none;">
+    <h2>Cryptic Clues</h2>
+    <p>Answer the cryptic clues using the answers from the word search:</p>
+    <p><strong>Question 7:</strong> A synonym for "understand" is the second letter.</p>
+    <input type="text" id="crypticCluesAnswer1" placeholder="Your Answer">
+    <!-- Repeat similar structure for other questions -->
+    <button onclick="checkCrypticCluesAnswers()">Submit</button>
+</section>
+
+<!-- Number Puzzle -->
+<section id="numberPuzzleSection" style="display: none;">
+    <h2>Number Puzzle</h2>
+    <p>Arrange the numbers in the Sudoku puzzle to reveal the fifth letter:</p>
+    <!-- Sudoku grid goes here -->
+    <p><strong>Question 9:</strong> Arrange the numbers to reveal the fifth letter.</p>
+    <input type="text" id="numberPuzzleAnswer" placeholder="Your Answer">
+    <button onclick="checkNumberPuzzleAnswer()">Submit</button>
+</section>
+
+<!-- Rebus Puzzles -->
+<section id="rebusPuzzlesSection" style="display: none;">
+    <h2>Rebus Puzzles</h2>
+    <p>Decode the rebus puzzles using the answers from the number puzzle:</p>
+    <!-- Rebus puzzle images and questions go here -->
+    <p><strong>Question 14:</strong> Unscramble the letters to reveal the final word.</p>
+    <input type="text" id="rebusPuzzlesAnswer" placeholder="Your Answer">
+    <button onclick="checkRebusPuzzlesAnswer()">Submit</button>
+</section>
+
+<!-- Final Message -->
+<section id="finalMessageSection" style="display: none;">
+    <h2>Congratulations!</h2>
+    <p>You've successfully solved all the puzzles. The final word is <strong>CUKET</strong>.</p>
+</section>
+
+<script>
+    // Add your JavaScript code here for checking answers and managing visibility.
+    function checkMazeAnswer() {
+        // Implement maze answer checking logic
+        // Show/hide relevant sections
+    }
+
+    function checkCrosswordAnswers() {
+        // Implement crossword answer checking logic
+        // Show/hide relevant sections
+    }
+
+    function checkWordSearchAnswer() {
+        // Implement word search answer checking logic
+        // Show/hide relevant sections
+    }
+
+    function checkCrypticCluesAnswers() {
+        // Implement cryptic clues answer checking logic
+        // Show/hide relevant sections
+    }
+
+    function checkNumberPuzzleAnswer() {
+        // Implement number puzzle answer checking logic
+        // Show/hide relevant sections
+    }
+
+    function checkRebusPuzzlesAnswer() {
+        // Implement rebus puzzles answer checking logic
+        // Show/hide relevant sections
+    }
+</script>
+</body>
+</html>

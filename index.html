@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <title>Full Page Image Sequence</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: #e6e6e6;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+            font-family: gilroy;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #hidden-content, #hidden-content-2, #hidden-content-3, #hidden-content-4, #hidden-content-5 {
+            overflow: hidden;
+            position: absolute;
+            right: -100%;
+            left: 100%;
+            transition: left 3s ease-in-out, right 3s ease-in-out;
+        }
+
+        #hidden-content-2 {
+            overflow: hidden;
+            position: absolute;
+            left: -100%;
+            right: 100%;
+            transition: left 3s ease-in-out, right 3s ease-in-out;
+        }
+
+        #hidden-content-3 {
+            overflow: hidden;
+            position: absolute;
+            left: 100%;
+            right: -100%;
+            transition: right 3s ease-in-out, left 3s ease-in-out;
+        }
+
+        #hidden-content-4 {
+            overflow: hidden;
+            position: absolute;
+            left: -100%;
+            right: 100%;
+            transition: left 3s ease-in-out, right 3s ease-in-out;
+        }
+
+        #hidden-content-5 {
+            overflow: hidden;
+            position: absolute;
+            left: 100%;
+            right: -100%;
+            transition: right 2s ease-in-out, left 2s ease-in-out;
+        }
+
+        #hidden-content.show, #hidden-content-2.show, #hidden-content-3.show, #hidden-content-4.show, #hidden-content-5.show {
+            left: 0;
+            right: 0;
+        }
+
+        #main {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #page, #page-2, #page-3, #page-4, #page-5 {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: #e6e6e6;
+        }
+
+        canvas {
+            position: relative;
+            z-index: 9;
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+
+        #loop {
+            display: flex;
+            position: absolute;
+            top: 30%;
+            height: 25%;
+            width: 100%;
+            font-size: 100px;
+            white-space: nowrap;
+            font-family: gilroy;
+        }
+
+        #loop>h1 {
+            font-weight: 400;
+            animation-name: anim;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        #loop>h1>span {
+            -webkit-text-stroke: 1.2px #000;
+            color: transparent;
+            font-weight: 500;
+        }
+
+        @keyframes anim {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        #loop>h11 {
+            font-weight: 300;
+            animation-name: anim;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        #loop>h11>span {
+            -webkit-text-stroke: 1.2px #000;
+            color: transparent;
+            font-weight: 400;
+        }
+
+        @keyframes anim {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        #loop>h12 {
+            font-weight: 400;
+            animation-name: anim;
+            animation-duration: 15s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        #loop>h12>span {
+            -webkit-text-stroke: 1.2px #000;
+            color: transparent;
+            font-weight: 500;
+        }
+
+        @keyframes anim {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        #nav2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 190%;
+            width: 200%;
+            position: fixed;
+            z-index: 99;
+            padding: 0px 30px;
+        }
+
+        #nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 7%;
+            width: 100%;
+            position: fixed;
+            z-index: 99;
+            padding: 0px 30px;
+        }
+
+        #nav>h3 {
+            font-family: gilroy;
+            font-weight: 400;
+            font-size: 22px;
+        }
+
+        #nav>button {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+        }
+        #nav2>button2 {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+        }
+
+        #page>h3, #page-2>h3, #page-3>h3, #page-4>h3, #page-5>h3 {
+            position: absolute;
+            top: 55%;
+            font-family: gilroy;
+            font-weight: 400;
+            color: #7c7c7c;
+            left: 2%;
+        }
+
+        #page>h4, #page-2>h4, #page-3>h4, #page-4>h4, #page-5>h4 {
+            position: absolute;
+            top: 62%;
+            left: 20%;
+            font-family: gilroy;
+            font-weight: 500;
+        }
+#page1>#right-text{
+    position: absolute;
+    top: 30%;
+    left: 8%;
+}
+#page1>#right-text>h3{
+    font-weight: 400;
+    color: #7c7c7c;
+}
+#page1>#right-text>h1{
+    line-height: 1.5;
+    font-size: 50px;
+}
+#page1>#left-text{
+    position: absolute;
+    top: 50%;
+    right: 7%;
+    text-align: end;
+}
+#page1>#left-text>h1{
+    font-size: 25px;
+    line-height: 1.5;
+}
+#page1>#left-text>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page2>#text1{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+#page2>#text1>h3{
+    top: 60%;
+    left: 10%;
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page2>#text3{
+    position: absolute;
+    top: 65%;
+    left: 10%;
+}
+#page2>#text3>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page2>#text1>h1{
+    font-size: 60px;
+    line-height: 1.5;
+}
+#page2>#text2{
+    position: absolute;
+    top: 55%;
+    right: 2%;
+    text-align: end;
+}
+#page2>#text2>p{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page3>#text3{
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    text-align: end;
+}
+#page3>#text3>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+#page3>#text3>h1{
+    font-size: 70px;
+
+}
+#page4>#right-text{
+    position: absolute;
+    top: 5%;
+    left: 6%;
+}
+#page4>#right-text>h3{
+    font-weight: 400;
+    color: #7c7c7c;
+}
+#page4>#right-text>h1{
+    line-height: 1.5;
+    font-size: 45px;
+}
+#page4>#left-text{
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    text-align: end;
+}
+#page4>#left-text>h1{
+    font-size: 28px;
+    line-height: 1.5;
+}
+#page4>#left-text>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+}
+    </style>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            let clickCount = 0;
+            let isClickEnabled = true;
+
+            // Function to enable click after 5 seconds
+            function enableClick() {
+                isClickEnabled = true;
+            }
+
+            // Add click event listener to the document
+            document.addEventListener('click', function () {
+                if (!isClickEnabled) {
+                    return;
+                }
+
+                clickCount++;
+                isClickEnabled = false;
+
+                // Toggle the 'show' class on the appropriate hidden-content element
+                if (clickCount % 5 === 1) {
+                    document.getElementById('hidden-content').classList.toggle('show');
+                    document.getElementById('hidden-content-2').classList.remove('show');
+                    document.getElementById('hidden-content-3').classList.remove('show');
+                    document.getElementById('hidden-content-4').classList.remove('show');
+                    document.getElementById('hidden-content-5').classList.remove('show');
+                } else if (clickCount % 5 === 2) {
+                    document.getElementById('hidden-content').classList.remove('show');
+                    document.getElementById('hidden-content-2').classList.toggle('show');
+                    document.getElementById('hidden-content-3').classList.remove('show');
+                    document.getElementById('hidden-content-4').classList.remove('show');
+                    document.getElementById('hidden-content-5').classList.remove('show');
+                } else if (clickCount % 5 === 3) {
+                    document.getElementById('hidden-content').classList.remove('show');
+                    document.getElementById('hidden-content-2').classList.remove('show');
+                    document.getElementById('hidden-content-3').classList.toggle('show');
+                    document.getElementById('hidden-content-4').classList.remove('show');
+                    document.getElementById('hidden-content-5').classList.remove('show');
+                } else if (clickCount % 5 === 4) {
+                    document.getElementById('hidden-content').classList.remove('show');
+                    document.getElementById('hidden-content-2').classList.remove('show');
+                    document.getElementById('hidden-content-3').classList.remove('show');
+                    document.getElementById('hidden-content-4').classList.toggle('show');
+                    document.getElementById('hidden-content-5').classList.remove('show');
+                } else {
+                    document.getElementById('hidden-content').classList.remove('show');
+                    document.getElementById('hidden-content-2').classList.remove('show');
+                    document.getElementById('hidden-content-3').classList.remove('show');
+                    document.getElementById('hidden-content-4').classList.remove('show');
+                    document.getElementById('hidden-content-5').classList.toggle('show');
+                }
+
+                // Disable click for 5 seconds
+                setTimeout(enableClick, 5000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="nav">
+        <h3><b>CLICK</b> TO START*</h3>
+        <button>26 JANUARY,2023</button>
+    </div>
+    <div id="hidden-content">
+        <!-- First hidden content -->
+        <div id="page">
+            <div id="loop">
+                <h1> <span style="color: red;">&hearts;</span>
+                <b>AI</b>WOPYUUU <span style="color: red;">&hearts;</span>
+                <span>YES </span><span style="color: red;">&hearts;</span>
+                <b> AI WOPYUUU </b> <span style="color: red;">&hearts;</span>
+                <span>YES </i>
+                </h1>
+                <h1> <span style="color: red;">&hearts;</span>
+                <b>AI</b>WOPYUUU <span style="color: red;">&hearts;</span>
+                <span>YES </span><span style="color: red;">&hearts;</span>
+                <b> AI WOPYUUU </b> <span style="color: red;">&hearts;</span>
+                <span>YES </i>
+                </h1>
+                <h1> <span style="color: red;">&hearts;</span>
+                <b>AI</b>WOPYUUU <span style="color: red;">&hearts;</span>
+                <span>YES </span><span style="color: red;">&hearts;</span>
+                <b> AI WOPYUUU </b> <span style="color: red;">&hearts;</span>
+                <span>YES </i>
+                </h1>
+            </div>
+            <h3>You know how much I hate to get out of bed sometimes, even for the classes.<br>
+I’m a bit of a lazy person and I love to sleep or stay in my room.<br>
+So here I made a little effort to create this for you, to express how I feel.<br>
+I'm not perfect in this so if  there is some error then avoid it<br>
+like i avoid making good decisions.<br>
+</h3>
+        <div id="page2">
+            <div id="text1">
+                <h1>LET'S
+                    <br>
+                    TALK</h1>
+            </div>
+
+            <div id="text2">
+                <p><br><br><br><br><br><br><br><br><br>I know you’ve been waiting for my reply since last semester. <br>I’m sooo sorry for taking this long to respond.<br> 
+But finally here I am, at last, replying to your message. <br>I want to thank you for choosing me.<br>
+And now, I have to confess something. <br>I have developed a fancy for you. Yeppp, you heard me right.<br>
+And I hope you feel the same.
+
+</p>
+            </div>
+        </div>
+            <h4><br><br><br><br>...CLICK ANYWHERE TO START.</h4>
+            <canvas>AAAA</canvas>
+        </div>
+    </div>
+
+    <div id="hidden-content-2">
+        <!-- Second hidden content -->
+        <div id="page-2">
+            <div id="loop">
+                <h11>
+                <b>LOVE </b>IS
+                <span>A </span>
+                <b>WASTE OF</b>
+                <span>TIME  ....</i>
+                </h11>
+                <h11>
+                <b>LOVE </b>IS
+                <span>A </span>
+                <b>WASTE OF </b>
+                <span>TIME  ....</i>
+                </h11>
+                <h11>
+                <b>LOVE </b>IS
+                <span>A </span>
+                <b>WASTE OF </b>
+                <span>TIME  ....</i>
+                </h11>
+            </div>
+        <div id="page2">
+            <div id="text3">
+                <h3></h3>
+</div>
+            <div id="text1">
+                <h1>LET'S
+                    <br>
+                    TALK</h1>
+            </div>
+        <div id="page1">
+            <div id="right-text">
+                <h3><br><br><br><br><br><br>When I first talked to you, we didn't talk much and we left after talking.</br>
+ I was so confused at that point thaat I didn't know what to do then.</br>
+ I wasn't ready for these things at all.<br>I never expected something like this would happen.<br>
+ I didn't expect that we would talk again after that.<br> However, I'm glad we did.<br>
+ I know I'm a little bit of a boring person, <br>but still thanks for talking to me.</br>
+ I also know I sometimes make horrible decisions<br> I avoid things until they reach the end point.</br>
+ It's quite hard for me to make a good decision.<br> My brain won't let me do good things.<br>
+ Yep That's how I live. <br>That's why it took me so long to respond.</br>
+ But now I know what I'm doing.<br> Thank you for waiting till now.</h3>
+            </div></div>
+            <div id="text2">
+                <p>Please accept this as a humble attempt to express my feelings for you.</br>
+ I know it’s a little silly, but I thought I’d try anyway. After all, you’re worth taking a risk for.<br>
+You are intelligent, thoughtful, sweet, awesome, beautiful, hardworking, funny</br>But i dont know why you always looked so stressed.<br>
+You work so hard, but at least Sometimes give yourself some time,</br>
+sometimes relax and take out time for yourself and have a great coffee.<br>
+I don’t know how to compliment someone, never did, always insulted........that's how i am</br>
+I don’t want to bore you but want to let you know <br>that i treasure you not more than my sleeping schedule. But i do<br>
+ I ask myself every day what I did to deserve you. <br>I’m not very good at expressing my feelings,<br>
+but I want you to know I’m having a great time getting to know you.<br> And I want to know more. You make me curious.<br>
+I know we’ve only known each other for a few months now,<br> but I’ve just got to let you know how I feel.<br>
+I don’t know where to start, so let me start by saying, I like you. A lot.<br>
+Like, a lot a lot. Like, more than Web series or Netflix.<br>
+It's very difficult to explain in mathematical term.<br>
+
+</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="hidden-content-3">
+        <div id="page-3">
+        <div id="page1">
+            <div id="right-text">
+                <h3>I KNOW I AM NOT GOOD AT RESPONDING<BR>BUT I CAN BE A GOOD LISTENER</h3>
+                <h1>WILL YOU BE
+                <br>ABLE TO HANDLE 
+                <br>ALL THIS</h1>
+            </div>
+            <div id="left-text">
+                <h1>I overthink a lot
+                <br>I apologize to much
+                <br>I dont't care about myself
+                <br>I'm a good liar with no tells
+                <br>I'm good in creating stories 
+                <br>I'm not good at expressing</h1>
+<br>
+                    <h3>...Never think i am ignoring you<br>I am just not good at expressing things</h3>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="hidden-content-4">
+        <!-- Fourth hidden content -->
+        <div id="page-4">
+            <div id="loop">
+                <h12>
+                <b>KARLE </b>
+                <b>WASTE OF</b>
+                <span>TIME&#128524;....</i>
+                </h12>
+                <h12>
+                <b>KARLE </b>
+                <b>WASTE OF </b>
+                <span>TIME&#128524;....</i>
+                </h12>
+                <h12>
+                <b>KARLE </b>
+                <b>WASTE OF </b>
+                <span>TIME&#128524;....</i>
+                </h12>
+            </div>
+        <div id="page4">
+    <div id="nav2">
+          <button2 onclick="redirectToNewPage()">CLICK ME</button2>
+    </div>
+            <div id="right-text">
+                <h1>THINGS I <br>REALLY WANT <br>TO ASK YOU </h1>
+            </div>
+            <div id="left-text">
+                <h1>Are you comfortable with we
+                <br>Am I important to you
+                <br>Do you really like to talking to me
+                <br>Do you really like me 
+                <br>Do you really care about me
+                <br> &#128073;&#128072;&#129402;Trust? 
+            </div>
+        <div id="page1">
+            <div id="right-text">
+                <h3><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>So, what do you say? <br>Do you want to take this to the next level?</br><b>If yes then click</b> </h3>
+            </div></div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="hidden-content-5">
+        <!-- Fifth hidden content -->
+        <div id="page-5">
+            <!-- Your fifth content here -->
+        </div>
+    </div>
+<!-- Add your images with the "image" class -->
+<img src="male0001.png" alt="Image 1" class="image">
+<img src="male0002.png" alt="Image 2" class="image">
+<img src="male0003.png" alt="Image 1" class="image">
+<img src="male0004.png" alt="Image 2" class="image">
+<img src="male0005.png" alt="Image 1" class="image">
+<img src="male0006.png" alt="Image 2" class="image">
+<img src="male0007.png" alt="Image 1" class="image">
+<img src="male0008.png" alt="Image 2" class="image">
+<img src="male0009.png" alt="Image 1" class="image">
+<img src="male0010.png" alt="Image 2" class="image">
+<img src="male0011.png" alt="Image 1" class="image">
+<img src="male0012.png" alt="Image 2" class="image">
+<img src="male0013.png" alt="Image 1" class="image">
+<img src="male0014.png" alt="Image 2" class="image">
+<img src="male0015.png" alt="Image 1" class="image">
+<img src="male0016.png" alt="Image 2" class="image">
+<img src="male0017.png" alt="Image 1" class="image">
+<img src="male0018.png" alt="Image 2" class="image">
+<img src="male0019.png" alt="Image 1" class="image">
+<img src="male0020.png" alt="Image 2" class="image">
+<img src="male0021.png" alt="Image 1" class="image">
+<img src="male0022.png" alt="Image 2" class="image">
+<img src="male0023.png" alt="Image 1" class="image">
+<img src="male0024.png" alt="Image 2" class="image">
+<img src="male0025.png" alt="Image 1" class="image">
+<img src="male0026.png" alt="Image 2" class="image">
+<img src="male0027.png" alt="Image 1" class="image">
+<img src="male0028.png" alt="Image 2" class="image">
+<img src="male0029.png" alt="Image 1" class="image">
+<img src="male0030.png" alt="Image 2" class="image">
+<img src="male0031.png" alt="Image 1" class="image">
+<img src="male0032.png" alt="Image 2" class="image">
+<img src="male0033.png" alt="Image 1" class="image">
+<img src="male0034.png" alt="Image 2" class="image">
+<img src="male0035.png" alt="Image 1" class="image">
+<img src="male0036.png" alt="Image 2" class="image">
+<img src="male0037.png" alt="Image 1" class="image">
+<img src="male0038.png" alt="Image 2" class="image">
+<img src="male0039.png" alt="Image 1" class="image">
+<img src="male0040.png" alt="Image 2" class="image">
+<img src="male0041.png" alt="Image 1" class="image">
+<img src="male0042.png" alt="Image 2" class="image">
+<img src="male0043.png" alt="Image 1" class="image">
+<img src="male0044.png" alt="Image 2" class="image">
+<img src="male0045.png" alt="Image 1" class="image">
+<img src="male0046.png" alt="Image 2" class="image">
+<img src="male0047.png" alt="Image 1" class="image">
+<img src="male0048.png" alt="Image 2" class="image">
+<img src="male0049.png" alt="Image 1" class="image">
+<img src="male0050.png" alt="Image 2" class="image">
+<img src="male0051.png" alt="Image 1" class="image">
+<img src="male0052.png" alt="Image 2" class="image">
+<img src="male0053.png" alt="Image 1" class="image">
+<img src="male0054.png" alt="Image 2" class="image">
+<img src="male0055.png" alt="Image 1" class="image">
+<img src="male0056.png" alt="Image 2" class="image">
+<img src="male0057.png" alt="Image 1" class="image">
+<img src="male0058.png" alt="Image 2" class="image">
+<img src="male0059.png" alt="Image 1" class="image">
+<img src="male0060.png" alt="Image 2" class="image">
+<img src="male0061.png" alt="Image 1" class="image">
+<img src="male0062.png" alt="Image 2" class="image">
+<img src="male0063.png" alt="Image 1" class="image">
+<img src="male0064.png" alt="Image 2" class="image">
+<img src="male0065.png" alt="Image 1" class="image">
+<img src="male0066.png" alt="Image 2" class="image">
+<img src="male0067.png" alt="Image 1" class="image">
+<img src="male0068.png" alt="Image 2" class="image">
+<img src="male0069.png" alt="Image 1" class="image">
+<img src="male0070.png" alt="Image 2" class="image">
+<img src="male0071.png" alt="Image 1" class="image">
+<img src="male0072.png" alt="Image 2" class="image">
+<img src="male0073.png" alt="Image 1" class="image">
+<img src="male0074.png" alt="Image 2" class="image">
+<img src="male0075.png" alt="Image 1" class="image">
+<img src="male0076.png" alt="Image 2" class="image">
+<img src="male0077.png" alt="Image 1" class="image">
+<img src="male0078.png" alt="Image 2" class="image">
+<img src="male0079.png" alt="Image 1" class="image">
+<img src="male0080.png" alt="Image 2" class="image">
+<img src="male0081.png" alt="Image 1" class="image">
+<img src="male0082.png" alt="Image 2" class="image">
+<img src="male0083.png" alt="Image 1" class="image">
+<img src="male0084.png" alt="Image 2" class="image">
+<img src="male0085.png" alt="Image 1" class="image">
+<img src="male0086.png" alt="Image 2" class="image">
+<img src="male0087.png" alt="Image 1" class="image">
+<img src="male0088.png" alt="Image 2" class="image">
+<img src="male0089.png" alt="Image 1" class="image">
+<img src="male0090.png" alt="Image 2" class="image">
+<img src="male0091.png" alt="Image 1" class="image">
+<img src="male0092.png" alt="Image 2" class="image">
+<img src="male0093.png" alt="Image 1" class="image">
+<img src="male0094.png" alt="Image 2" class="image">
+<img src="male0095.png" alt="Image 1" class="image">
+<img src="male0096.png" alt="Image 2" class="image">
+<img src="male0097.png" alt="Image 1" class="image">
+<img src="male0098.png" alt="Image 2" class="image">
+<img src="male0099.png" alt="Image 1" class="image">
+<img src="male0100.png" alt="Image 2" class="image">
+<img src="male0101.png" alt="Image 2" class="image">
+<img src="male0102.png" alt="Image 1" class="image">
+<img src="male0103.png" alt="Image 2" class="image">
+<img src="male0104.png" alt="Image 1" class="image">
+<img src="male0105.png" alt="Image 2" class="image">
+<img src="male0106.png" alt="Image 1" class="image">
+<img src="male0107.png" alt="Image 2" class="image">
+<img src="male0108.png" alt="Image 1" class="image">
+<img src="male0109.png" alt="Image 2" class="image">
+<img src="male0110.png" alt="Image 1" class="image">
+<img src="male0111.png" alt="Image 2" class="image">
+<img src="male0112.png" alt="Image 2" class="image">
+<img src="male0113.png" alt="Image 1" class="image">
+<img src="male0114.png" alt="Image 2" class="image">
+<img src="male0115.png" alt="Image 1" class="image">
+<img src="male0116.png" alt="Image 2" class="image">
+<img src="male0117.png" alt="Image 1" class="image">
+<img src="male0118.png" alt="Image 2" class="image">
+<img src="male0119.png" alt="Image 1" class="image">
+<img src="male0120.png" alt="Image 2" class="image">
+<img src="male0121.png" alt="Image 1" class="image">
+<img src="male0122.png" alt="Image 2" class="image">
+<img src="male0123.png" alt="Image 1" class="image">
+<img src="male0124.png" alt="Image 2" class="image">
+<img src="male0125.png" alt="Image 1" class="image">
+<img src="male0126.png" alt="Image 2" class="image">
+<img src="male0127.png" alt="Image 1" class="image">
+<img src="male0128.png" alt="Image 2" class="image">
+<img src="male0129.png" alt="Image 1" class="image">
+<img src="male0130.png" alt="Image 2" class="image">
+<img src="male0131.png" alt="Image 1" class="image">
+<img src="male0132.png" alt="Image 2" class="image">
+<img src="male0133.png" alt="Image 1" class="image">
+<img src="male0134.png" alt="Image 2" class="image">
+<img src="male0135.png" alt="Image 1" class="image">
+<img src="male0136.png" alt="Image 2" class="image">
+<img src="male0137.png" alt="Image 1" class="image">
+<img src="male0138.png" alt="Image 2" class="image">
+<img src="male0139.png" alt="Image 1" class="image">
+<img src="male0140.png" alt="Image 2" class="image">
+<img src="male0141.png" alt="Image 1" class="image">
+<img src="male0142.png" alt="Image 2" class="image">
+<img src="male0143.png" alt="Image 1" class="image">
+<img src="male0144.png" alt="Image 2" class="image">
+<img src="male0145.png" alt="Image 1" class="image">
+<img src="male0146.png" alt="Image 2" class="image">
+<img src="male0147.png" alt="Image 1" class="image">
+<img src="male0148.png" alt="Image 2" class="image">
+<img src="male0149.png" alt="Image 1" class="image">
+<img src="male0150.png" alt="Image 2" class="image">
+<img src="male0151.png" alt="Image 1" class="image">
+<img src="male0152.png" alt="Image 2" class="image">
+<img src="male0153.png" alt="Image 1" class="image">
+<img src="male0154.png" alt="Image 2" class="image">
+<img src="male0155.png" alt="Image 1" class="image">
+<img src="male0156.png" alt="Image 2" class="image">
+<img src="male0157.png" alt="Image 1" class="image">
+<img src="male0158.png" alt="Image 2" class="image">
+<img src="male0159.png" alt="Image 1" class="image">
+<img src="male0160.png" alt="Image 2" class="image">
+<img src="male0161.png" alt="Image 1" class="image">
+<img src="male0162.png" alt="Image 2" class="image">
+<img src="male0163.png" alt="Image 1" class="image">
+<img src="male0164.png" alt="Image 2" class="image">
+<img src="male0165.png" alt="Image 1" class="image">
+<img src="male0166.png" alt="Image 2" class="image">
+<img src="male0167.png" alt="Image 1" class="image">
+<img src="male0168.png" alt="Image 2" class="image">
+<img src="male0169.png" alt="Image 1" class="image">
+<img src="male0170.png" alt="Image 2" class="image">
+<img src="male0171.png" alt="Image 1" class="image">
+<img src="male0172.png" alt="Image 2" class="image">
+<img src="male0173.png" alt="Image 1" class="image">
+<img src="male0174.png" alt="Image 2" class="image">
+<img src="male0175.png" alt="Image 1" class="image">
+<img src="male0176.png" alt="Image 2" class="image">
+<img src="male0177.png" alt="Image 1" class="image">
+<img src="male0178.png" alt="Image 2" class="image">
+<img src="male0179.png" alt="Image 1" class="image">
+<img src="male0180.png" alt="Image 2" class="image">
+<img src="male0181.png" alt="Image 1" class="image">
+<img src="male0182.png" alt="Image 2" class="image">
+<img src="male0183.png" alt="Image 1" class="image">
+<img src="male0184.png" alt="Image 2" class="image">
+<img src="male0185.png" alt="Image 1" class="image">
+<img src="male0186.png" alt="Image 2" class="image">
+<img src="male0187.png" alt="Image 1" class="image">
+<img src="male0188.png" alt="Image 2" class="image">
+<img src="male0189.png" alt="Image 1" class="image">
+<img src="male0190.png" alt="Image 2" class="image">
+<img src="male0191.png" alt="Image 1" class="image">
+<img src="male0192.png" alt="Image 2" class="image">
+<img src="male0193.png" alt="Image 1" class="image">
+<img src="male0194.png" alt="Image 2" class="image">
+<img src="male0195.png" alt="Image 1" class="image">
+<img src="male0196.png" alt="Image 2" class="image">
+<img src="male0197.png" alt="Image 1" class="image">
+<img src="male0198.png" alt="Image 2" class="image">
+<img src="male0199.png" alt="Image 1" class="image">
+<img src="male0200.png" alt="Image 1" class="image">
+<img src="male0201.png" alt="Image 2" class="image">
+<img src="male0202.png" alt="Image 1" class="image">
+<img src="male0203.png" alt="Image 2" class="image">
+<img src="male0204.png" alt="Image 1" class="image">
+<img src="male0205.png" alt="Image 2" class="image">
+<img src="male0206.png" alt="Image 1" class="image">
+<img src="male0207.png" alt="Image 2" class="image">
+<img src="male0208.png" alt="Image 1" class="image">
+<img src="male0209.png" alt="Image 2" class="image">
+<img src="male0210.png" alt="Image 1" class="image">
+<img src="male0211.png" alt="Image 2" class="image">
+<img src="male0212.png" alt="Image 2" class="image">
+<img src="male0213.png" alt="Image 1" class="image">
+<img src="male0214.png" alt="Image 2" class="image">
+<img src="male0215.png" alt="Image 1" class="image">
+<img src="male0216.png" alt="Image 2" class="image">
+<img src="male0217.png" alt="Image 1" class="image">
+<img src="male0218.png" alt="Image 2" class="image">
+<img src="male0219.png" alt="Image 1" class="image">
+<img src="male0220.png" alt="Image 2" class="image">
+<img src="male0221.png" alt="Image 1" class="image">
+<img src="male0222.png" alt="Image 2" class="image">
+<img src="male0223.png" alt="Image 1" class="image">
+<img src="male0224.png" alt="Image 2" class="image">
+<img src="male0225.png" alt="Image 1" class="image">
+<img src="male0226.png" alt="Image 2" class="image">
+<img src="male0227.png" alt="Image 1" class="image">
+<img src="male0228.png" alt="Image 2" class="image">
+<img src="male0229.png" alt="Image 1" class="image">
+<img src="male0230.png" alt="Image 2" class="image">
+<img src="male0231.png" alt="Image 1" class="image">
+<img src="male0232.png" alt="Image 2" class="image">
+<img src="male0233.png" alt="Image 1" class="image">
+<img src="male0234.png" alt="Image 2" class="image">
+<img src="male0235.png" alt="Image 1" class="image">
+<img src="male0236.png" alt="Image 2" class="image">
+<img src="male0237.png" alt="Image 1" class="image">
+<img src="male0238.png" alt="Image 2" class="image">
+<img src="male0239.png" alt="Image 1" class="image">
+<img src="male0240.png" alt="Image 2" class="image">
+<img src="male0241.png" alt="Image 1" class="image">
+<img src="male0242.png" alt="Image 2" class="image">
+<img src="male0243.png" alt="Image 1" class="image">
+<img src="male0244.png" alt="Image 2" class="image">
+<img src="male0245.png" alt="Image 1" class="image">
+<img src="male0246.png" alt="Image 2" class="image">
+<img src="male0247.png" alt="Image 1" class="image">
+<img src="male0248.png" alt="Image 2" class="image">
+<img src="male0249.png" alt="Image 1" class="image">
+<img src="male0250.png" alt="Image 2" class="image">
+<img src="male0251.png" alt="Image 1" class="image">
+<img src="male0252.png" alt="Image 2" class="image">
+<img src="male0253.png" alt="Image 1" class="image">
+<img src="male0254.png" alt="Image 2" class="image">
+<img src="male0255.png" alt="Image 1" class="image">
+<img src="male0256.png" alt="Image 2" class="image">
+<img src="male0257.png" alt="Image 1" class="image">
+<img src="male0258.png" alt="Image 2" class="image">
+<img src="male0259.png" alt="Image 1" class="image">
+<img src="male0260.png" alt="Image 2" class="image">
+<img src="male0261.png" alt="Image 1" class="image">
+<img src="male0262.png" alt="Image 2" class="image">
+<img src="male0263.png" alt="Image 1" class="image">
+<img src="male0264.png" alt="Image 2" class="image">
+<img src="male0265.png" alt="Image 1" class="image">
+<img src="male0266.png" alt="Image 2" class="image">
+<img src="male0267.png" alt="Image 1" class="image">
+<img src="male0268.png" alt="Image 2" class="image">
+<img src="male0269.png" alt="Image 1" class="image">
+<img src="male0270.png" alt="Image 2" class="image">
+<img src="male0271.png" alt="Image 1" class="image">
+<img src="male0272.png" alt="Image 2" class="image">
+<img src="male0273.png" alt="Image 1" class="image">
+<img src="male0274.png" alt="Image 2" class="image">
+<img src="male0275.png" alt="Image 1" class="image">
+<img src="male0276.png" alt="Image 2" class="image">
+<img src="male0277.png" alt="Image 1" class="image">
+<img src="male0278.png" alt="Image 2" class="image">
+<img src="male0279.png" alt="Image 1" class="image">
+<img src="male0280.png" alt="Image 2" class="image">
+<img src="male0281.png" alt="Image 1" class="image">
+<img src="male0282.png" alt="Image 2" class="image">
+<img src="male0283.png" alt="Image 1" class="image">
+<img src="male0284.png" alt="Image 2" class="image">
+<img src="male0285.png" alt="Image 1" class="image">
+<img src="male0286.png" alt="Image 2" class="image">
+<img src="male0287.png" alt="Image 1" class="image">
+<img src="male0288.png" alt="Image 2" class="image">
+<img src="male0289.png" alt="Image 1" class="image">
+<img src="male0290.png" alt="Image 2" class="image">
+<img src="male0291.png" alt="Image 1" class="image">
+<img src="male0292.png" alt="Image 2" class="image">
+<img src="male0293.png" alt="Image 1" class="image">
+<img src="male0294.png" alt="Image 2" class="image">
+<img src="male0295.png" alt="Image 1" class="image">
+<img src="male0296.png" alt="Image 2" class="image">
+<img src="male0297.png" alt="Image 1" class="image">
+<img src="male0298.png" alt="Image 2" class="image">
+<img src="male0299.png" alt="Image 1" class="image">
+<img src="male0300.png" alt="Image 1" class="image">
+
+
+<!-- Add more images as needed -->
+
+<script>
+    const images = document.querySelectorAll('.image');
+    let currentIndex = 0;
+    let clickCount = 0;
+    let clickDisabled = false;
+
+    function showNextImage() {
+        images[currentIndex].classList.remove('visible');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('visible');
+        
+        // Check if the clickCount conditions are met to pause the sequence
+        if ((currentIndex === 1 && clickCount === 0) ||
+            (currentIndex === 89 && clickCount === 1) ||
+            (currentIndex === 142 && clickCount === 2) ||
+            (currentIndex === 200 && clickCount === 3) ||
+            (currentIndex === images.length - 1 && clickCount === 4)) {
+            clearInterval(interval);
+        }
+    }
+
+    function resumeSequence() {
+        if (!clickDisabled) {
+            // Disable further clicks for 5 seconds
+            clickDisabled = true;
+            setTimeout(() => {
+                clickDisabled = false;
+            }, 5000);
+
+            // Reset click count
+            clickCount = (clickCount + 1) % 5;
+            
+            // Restart the image sequence
+            interval = setInterval(showNextImage, 50); // Change 33.333333333 to the desired time in milliseconds
+        }
+    }
+
+    // Start the image sequence
+    let interval = setInterval(showNextImage, 50); // Change 33.333333333 to the desired time in milliseconds
+
+    // Add click event listener to the document
+    document.addEventListener('click', resumeSequence);
+</script>
+<script>
+    function redirectToNewPage() {
+        // Change the URL to the desired destination
+        window.location.href = 'Date invitation/dateinvitation.html';
+    }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" integrity="sha512-AMl4wfwAmDM1lsQvVBBRHYENn1FR8cfOTpt8QVbb/P55mYOdahHD4LmHM1W55pNe3j/3od8ELzPf/8eNkkjISQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            pointer-events: none;
+        }
+
+        .column {
+            box-sizing: border-box;
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease, transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .column:hover {
+            transform: scale(1.05);
+        }
+
+        .column img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .details {
+            position: fixed;
+            bottom: 120px; /* Adjust as needed */
+            left: 90px; /* Adjust as needed */
+            transform-origin: bottom left;
+            transform: perspective(1000px) rotateX(-30deg);
+            text-align: left;
+            color: white;
+            display: none;
+            z-index: 1; /* Ensure it's above the image */
+            border-radius: 10px; /* Add border-radius for smooth edges */
+            overflow: hidden; /* Hide overflow to prevent corner artifacts */
+            font-size: 25px; /* Adjust the font size */
+            font-family: 'Pacifico', cursive; /* Adjust the font family */
+            margin: 0;
+        }
+
+        .column:hover .details {
+            display: block;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            font-size: 15px; /* Adjust the font size */
+            font-family: 'Pacifico', cursive; /* Adjust the font family */
+            margin: 0;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transform: translateZ(10px);
+        }
+    </style>
+    <title>Three Column Screen</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var columns = document.querySelectorAll('.column');
+            columns.forEach(function (column, index) {
+                setTimeout(function () {
+                    column.style.opacity = '1';
+                }, (index + 1) * 1000);
+            });
+
+            setTimeout(function () {
+                document.body.style.pointerEvents = "auto";
+                
+                columns.forEach(function (column) {
+                    column.addEventListener('mouseenter', function () {
+                        this.style.transform = 'scale(1.3)';
+                    });
+
+                    column.addEventListener('mouseleave', function () {
+                        this.style.transform = 'scale(1)';
+                    });
+                });
+            }, 4000);
+        });
+        function redirectToPage(pageNumber, data) {
+            // Pass the data as a URL parameter
+            window.location.href = `Date for dinner.html?button=${pageNumber}&data=${encodeURIComponent(data)}`;
+        }
+    </script>
+</script>
+</head>
+<body>
+    <div class="column" onclick="redirectToPage(1, 'dataForRoute44')">
+        <img src="22.jpg" alt="Image 1">
+        <div class="details">
+            <p>ROUTE <br>44</p>
+            <!-- Update the link with data parameter -->
+            <a href="Date for dinner.html?button=1&data=dataForRoute44" class="button">Click Here</a>
+        </div>
+    </div>
+    <div class="column" onclick="redirectToPage(2, 'dataForZamindara')">
+        <img src="z.jpg" alt="Image 2">
+        <div class="details">
+            <p>ZAMINDARA<br> DHABA</p>
+            <!-- Update the link with data parameter -->
+            <a href="Date for dinner.html?button=2&data=dataForZamindara" class="button">Click Here</a>
+        </div>
+    </div>
+    <div class="column" onclick="redirectToPage(3, 'dataForPunjabiHaveli')">
+        <img src="haveli.jpg" alt="Image 3">
+        <div class="details">
+            <p>PUNJABI<br>HAVELI</p>
+            <!-- Update the link with data parameter -->
+            <a href="Date for dinner.html?button=3&data=dataForPunjabiHaveli" class="button">Click Here</a>
+        </div>
+    </div>
+</body>
+</html>

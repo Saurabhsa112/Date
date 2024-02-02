@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Parts Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: stretch;
+            min-height: 100vh; /* Ensure the body covers the whole viewport height */
+        }
+
+        .part {
+            position: relative;
+            flex-basis: calc(50% - 2px); /* Adjusted flex-basis to consider border */
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+            height: 50vh; /* Set a fixed height for the box (50% of viewport height) */
+            margin: 1px; /* Added a small margin to create a border effect */
+            border-radius: 15px; /* Added border-radius for smooth edges */
+        }
+
+        .part img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.8);
+            border-radius: 15px; /* Apply the same border-radius to the image */
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            text-align: left;
+            color: #fff;
+        }
+
+        .button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 5px;
+            text-decoration: none; /* Remove default link underline */
+            display: inline-block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="part">
+        <img src="pirates.jpg" alt="Image 1">
+        <div class="button-container">
+            <p>PIRATES OF GRILL</p>
+            <a href="page1.html" class="button">CLICK HERE</a>
+        </div>
+    </div>
+
+    <div class="part">
+        <img src="haveli.jpg" alt="Image 2">
+        <div class="button-container">
+            <p>PUNJABI HAVELI</p>
+            <a href="page2.html" class="button">CLICK HERE</a>
+        </div>
+    </div>
+
+    <div class="part">
+        <img src="z.jpg" alt="Image 3">
+        <div class="button-container">
+            <p>ZAMINDARA</p>
+            <a href="page3.html" class="button">CLICK HERE</a>
+        </div>
+    </div>
+
+    <div class="part">
+        <img src="y.jpg" alt="Image 4">
+        <div class="button-container">
+            <p>YOUR CHOICE OF LOCATION</p>
+            <a href="page4.html" class="button">CLICK HERE</a>
+        </div>
+    </div>
+</body>
+</html>

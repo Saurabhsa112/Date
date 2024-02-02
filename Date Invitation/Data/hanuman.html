@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanuman</title>
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+  max-width: 100vw;
+  overflow-y: auto; /* Make the page scrollable */
+  padding-top: 5px; /* Add padding to fix the first row 5px from the top */
+  height: 100vh; /* Add this line to ensure the container takes the full viewport height */
+}
+
+.sec {
+  background-size: cover;
+  background-position: center;
+  width: calc(25% - 20px);
+  text-align: center;
+  position: relative;
+  border-radius: 30px;
+  transition: all .5s ease-in-out;
+  transform: scale(1);
+  border: 2px solid #999999;
+  margin: 10px;
+}
+
+.sec:hover {
+  transform: scale(0.9);
+}
+.bg16 {
+  background-image: url(https://th.bing.com/th/id/OIG.tZoE2KgdtKp0GnjsUwgI?pid=ImgGn);
+}
+.bg1 {
+  background-image: url(https://th.bing.com/th/id/OIG.jQIGOXiHFZhyWzBNIQ0N?pid=ImgGn);
+}
+
+.bg2 {
+  background-image: url(https://th.bing.com/th/id/OIG.SqK4.tgWhS0KJB2LT15R?pid=ImgGn);
+}
+
+.bg3 {
+  background-image: url(https://th.bing.com/th/id/OIG.J8oCmQ_bXZOKU1H_8p9p?pid=ImgGn);
+}
+.bg4 {
+  background-image: url(https://th.bing.com/th/id/OIG.jTOnWJedkxxnvqhTd8xk?pid=ImgGn);
+}
+.bg5 {
+  background-image: url(https://th.bing.com/th/id/OIG.vGp2sNvKU4wjxPc7Evbp?pid=ImgGn);
+}
+.bg6 {
+  background-image: url(https://th.bing.com/th/id/OIG.tMDzngD9CSSStK.ND._l?pid=ImgGn);
+}
+.bg7 {
+  background-image: url(https://th.bing.com/th/id/OIG.YfyN7t2r3u4tOEMHKUuA?w=1024&h=1024&rs=1&pid=ImgDetMain);
+}
+.bg8 {
+  background-image: url(https://th.bing.com/th/id/OIG.h.ZrbjBNpPClWw4Jzwez?pid=ImgGn);
+}
+.bg9 {
+  background-image: url(https://th.bing.com/th/id/OIG.NEM7a2tlErlo_GbRx8I6?pid=ImgGn);
+}
+.bg10 {
+  background-image: url(https://th.bing.com/th/id/OIG.OY8._gLiRoHwUFsHF6Lc?pid=ImgGn);
+}
+.bg11 {
+  background-image: url(https://th.bing.com/th/id/OIG.eRW6IkdFSKReDKBpuhD6?pid=ImgGn);
+}
+.bg12 {
+  background-image: url(https://th.bing.com/th/id/OIG.sQWNMZWtPTbNXV2hlzkt?pid=ImgGn);
+}
+.bg13 {
+  background-image: url(https://th.bing.com/th/id/OIG.XnoFhkJLVsc5p_8Y3tR4?pid=ImgGn);
+}
+.bg14 {
+  background-image: url(https://th.bing.com/th/id/OIG.InMEpWxUfQ9bCP4VKdbU?w=1024&h=1024&rs=1&pid=ImgDetMain);
+}
+.bg15 {
+  background-image: url(https://th.bing.com/th/id/OIG.kprPXHO4Y92PJvyYUbB5?pid=ImgGn);
+}
+.sec img {
+  width: 100%;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.sec h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  z-index: 9;
+  transition: all .5s ease-in-out;
+}
+
+.sec:hover h1 {
+  transform: scale(1.4);
+}
+
+.sec:hover img {
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+@media (max-width: 769px) {
+  .sec {
+    width: calc(20% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    height: auto;
+    overflow: unset;
+  }
+
+  .sec {
+    width: calc(40% - 20px);
+  }
+
+  .sec:hover img {
+    transform: scale(1.2);
+  }
+
+  .sec:hover h1 {
+    transform: scale(1);
+  }
+}
+#submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submitButton:hover {
+    background-color: #45a049;
+}
+
+</style>
+</head>
+<body>
+
+<div class="main">
+    <div class="sec bg16 btn" onclick="submitForm('February 2 Date on February 14')">
+        <h1 class="title">February 14</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg1 btn" onclick="submitForm('February 2 Date on February 15')">
+        <h1 class="title">February 15</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg2 btn onclick="submitForm('February 2 Date on February 16')">
+        <h1 class="title">February 16</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg3 onclick="submitForm('February 2 Date on February 17')">
+        <h1 class="title">February 17</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg4 btn onclick="submitForm('February 2 Date on February 18')">
+        <h1 class="title">February 18</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg5 btn" onclick="submitForm('February 2 Date on February 19')">
+        <h1 class="title">February 19</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg6 btn" onclick="submitForm('February 2 Date on February 20')">
+        <h1 class="title">February 20</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg7 btn" onclick="submitForm('February 2 Date on February 21')">
+        <h1 class="title">February 21</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg8 btn onclick="submitForm('February 2 Date on February 22')">
+        <h1 class="title">February 22</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg9 btn onclick="submitForm('February 2 Date on February 23')">
+        <h1 class="title">February 23</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg10 btn" onclick="submitForm('February 2 Date on February 24')">
+        <h1 class="title">February 24</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg11 btn" onclick="submitForm('February 2 Date on February 25')">
+        <h1 class="title">February 25</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg12 btn" onclick="submitForm('February 2 Date on February 26')">
+        <h1 class="title">February 26</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg13 btn" onclick="submitForm('February 2 Date on February 27')">
+        <h1 class="title">February 27</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg14 btn" onclick="submitForm('February 2 Date on February 28')">
+        <h1 class="title">February 28</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg15 btn" onclick="submitForm('February 2 Date on February 29')">
+        <h1 class="title">February 29</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+</div>
+
+<form action="https://formcarry.com/s/h5D1vtZAV24" method="POST" enctype="multipart/form-data" id="myForm">
+    <input type="hidden" name="name" id="fc-generated-1-name" />
+    <input type="hidden" name="email" id="fc-generated-1-email" />
+    <input type="hidden" name="message" id="fc-generated-1-message" />
+
+    <button type="submit" id="submitButton" style="display: none;"></button>
+</form>
+
+<script>
+    function handleButtonClick(name, message) {
+        // Set form values based on the button clicked
+        document.getElementById('fc-generated-1-name').value = name;
+        document.getElementById('fc-generated-1-email').value = name.toLowerCase().replace(/\s/g, '') + '@example.com';
+        document.getElementById('fc-generated-1-message').value = message;
+
+        // Trigger form submission
+        document.getElementById('submitButton').click();
+    }
+
+    function submitForm(message) {
+        // Set form values based on the button clicked
+        document.getElementById('fc-generated-1-name').value = 'Default Name';
+        document.getElementById('fc-generated-1-email').value = 'default@example.com';
+        document.getElementById('fc-generated-1-message').value = message;
+
+        // Trigger form submission
+        document.getElementById('submitButton').click();
+    }
+</script>
+
+</body>
+</html>

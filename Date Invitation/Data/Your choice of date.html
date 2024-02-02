@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: auto;
+      background-color: black;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+      padding: 10px;
+      height: auto;
+    }
+
+    .button {
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      transition: transform 0.5s ease, z-index 0.5s ease;
+      margin: 0px;
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+      opacity: 0; /* Initially set opacity to 0 */
+    }
+   .button.top-left {
+      transform-origin: top left;
+    }
+
+    .button.top-right {
+      transform-origin: top right;
+    }
+
+    .button.bottom-left {
+      transform-origin: bottom left;
+    }
+
+    .button.bottom-right {
+      transform-origin: bottom right;
+    }
+
+    /* Additional class for top row buttons (excluding corner buttons) */
+    .button.top-row {
+      transform-origin: top center;
+    }
+
+    /* Additional class for bottom row buttons (excluding corner buttons) */
+    .button.bottom-row {
+      transform-origin: bottom center;
+    }
+
+    /* Additional class for left column buttons (excluding corner buttons) */
+    .button.left-column {
+      transform-origin: center left;
+    }
+
+    /* Additional class for right column buttons (excluding corner buttons) */
+    .button.right-column {
+      transform-origin: center right;
+    }
+
+    .button:hover {
+      transform: scale(1.3);
+      z-index: 1;
+    }
+
+    .button.appear {
+      animation: appear 3s ease-out forwards; /* Add animation for appearing */
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <!-- Repeat the following button structure for each button -->
+    <div class="button top-left">
+      <img src="https://th.bing.com/th/id/OIG2.2BhqukOytTWQt1OJDVTz?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 0">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 1', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.WuhazOr4N.oMtZi.5pqX?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 1">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 2', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.LSsmxa2PeTGHohSrN6j0?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 2">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 3', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.yla0o4H3F1jvJSyd2Obk?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 3">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 4', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.J38PsNoWno.zC2hBIeTH?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 4">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 5', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.A4C6MabsQQNQ_EjTyKRA?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 5">
+    </div>
+    <div class="button top-row" onclick="submitForm('Date on February 6', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.t89evW0nCF8q.SbhtKD_?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 6">
+    </div>
+    <div class="button top-right" onclick="submitForm('Date on February 7', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.bgli6aT9HpEkUNWXlomM?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 7">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on February 8', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.rL1R9jdKmigzBkB5xi0A?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 8">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 9', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.dEWHmGA4az_rwfRMurfa?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 9">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 10', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.vEc_Npr9hEh7z4sVermi?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 10">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 11', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.QupBk1YmpscUm9azAmfD?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 11">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 12', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.D_al3I5XnJZGVLi0no4w?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 12">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 13', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.FfOBFt_ohfO.qDtAm_71?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 13">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 14', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.v1raOs7CtAgyJteoMO7u?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 14">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on February 15', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.Wi6Cs5_FFvkXNDnNY2f.?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 15">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on February 16', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.lDqV29P.RDlyCMvXFI1W?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 16">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 17', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.nGVIhzQy89feWwDR5O5W?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 17">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 18', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.PdJ6LnsZuZCYf.nLX0Of?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 18">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 19', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.mWGh7chnHCFxp4Ac_OQB?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 19">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 20', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.Q0m.pfoyZjuDFABBHL7C?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 20">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 21', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.WJ1lk2hTr2QY6LAOC16I?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 21">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 22', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.SWDXm0BDCmQlotSItYje?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 22">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on February 23', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.aSdDEvldmF_XtbIT5v6v?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 23">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on February 24', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.kOC.0QVdDsmtCPZLkcgy?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 24">
+    </div>
+    <div class="button" onclick="submitForm('Date of February 25', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.KtzhCM8WQBWU8EgdhlpA?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 25">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 26', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.3YFxy781bWYf.25np6II?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 26">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 27', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4..uPJok7juk7BErkYRxVj?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 27">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 28', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.w1Yko_hdUmYYaUOYLWPU?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 28">
+    </div>
+    <div class="button" onclick="submitForm('Date on February 29', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.35aA91uH89mFoofVcztH?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 29">
+    </div>
+    <div class="button">
+      <img src="https://th.bing.com/th/id/OIG2.bu_MP9FSafoqZL3Ljvct?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 30">
+    </div>
+    <div class="button right-column">
+      <img src="https://th.bing.com/th/id/OIG4.km9TqxZtZ1_NGeSj9PmC?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button 31">
+    </div>
+    <div class="button left-column">
+      <img src="https://th.bing.com/th/id/OIG2.AWjAXNZmJ6k4IXl5_Wit?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M0">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 1', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.NI5PBZ6uEdg7i1TeihNY?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M1">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 2', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.98a45yVKSefWoKBdVYnV?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M2">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 3', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.rJ2i4RRVKCVZGu3cTN9X?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M3">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 4', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.RTaQJlbzPZacDaVDo1_K?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M4">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 5', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.7k2V0BpRRqTu_SirTe5q?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M5">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 6', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.KO6nKqj9HYebbi8LjG45?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M6">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on March 7', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.p17yVIHkI.rlaUuEulj6?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M7">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on March 8', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.PRIfjvy_LsLbcvTmQNIB?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M8">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 9', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.7MSm4MbpwkTva7II2sVd?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M9">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 10', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.92uI7rxzON7txOVGsagu?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M10">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 11', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.V45KD19Uz3Nw4F2heWBk?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M11">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 12', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.vNfjbGqz6w5g2VETKddW?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M12">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 13', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.TyyOu_9xDgwResvQsahT?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M13">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 14', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.JQVFKuzZ50LWlpLa8Szy?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M14">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on March 15', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.8gEvI1zXz531IBzcS3RT?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M15">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on March 16', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.Kev9ZT4A.F9Drqo9zdPU?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M16">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 17', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.Ve9SXx_dMbwklYfQncpV?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M17">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 18', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.U5Uzfj4JP2jPXpXU2BdE?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M18">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 19', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.3MUqkeWt9IgTMwAhArjO?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M19">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 20', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.Tt.qZqFzyqipwwIJXf.3?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M20">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 21', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.W1GON5FCItcS06Y4Hde7?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M21">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 22', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG4.k0TCEUI.g5C5XVVmLIm3?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M22">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on March 23', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.uOy.21AKv7wVOadmCuh9?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M23">
+    </div>
+    <div class="button left-column" onclick="submitForm('Date on March 24', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.6ra5AncKkaDzI._97ARN?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M24">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 25', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.kjOQ_PzyYOv3VsVmji8e?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M25">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 26', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.QfwJ9VA3hKUTvS2VyYek?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M26">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 27', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.kXWUXkr.KSukq1TPmWwa?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M27">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 28', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG2.tPBiP6mCT1L2yO363.iQ?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M28">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 29', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3._39TRVxkJ2IlLOw.xT50?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M29">
+    </div>
+    <div class="button" onclick="submitForm('Date on March 30', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG1.4L0bmFRBa7U4pm.X9rTA?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M30">
+    </div>
+    <div class="button right-column" onclick="submitForm('Date on March 31', prompt('YOUR CHOICE OF DATE............'))">
+      <img src="https://th.bing.com/th/id/OIG3.xzGM7wmDm2qAUMd4LFQX?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Button M31">
+    </div>
+    <!-- Repeat the structure above for the remaining 29 buttons -->
+  </div>
+<form action="https://formcarry.com/s/h5D1vtZAV24" method="POST" enctype="multipart/form-data" id="myForm">
+    <input type="hidden" name="name" id="fc-generated-1-name" />
+    <input type="hidden" name="email" id="fc-generated-1-email" />
+    <input type="hidden" name="message" id="fc-generated-1-message" />
+
+    <button type="submit" id="submitButton" style="display: none;"></button>
+  </form>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get all buttons
+    var buttons = document.querySelectorAll('.button');
+
+    // Function to show buttons with delay
+    function showButtonsWithDelay() {
+      buttons.forEach(function (button, index) {
+        setTimeout(function () {
+          button.classList.add('appear');
+        }, index * 100);
+      });
+    }
+
+    // Call the function after a delay
+    setTimeout(showButtonsWithDelay, 100);
+  });
+
+  // Corrected submitForm function
+  function submitForm(name, message) {
+    // Check if the message is empty
+    if (!message) {
+      alert("Please enter a message!");
+      return;
+    }
+
+    // Update hidden form fields with button-specific data
+    document.getElementById('fc-generated-1-name').value = name;
+    document.getElementById('fc-generated-1-message').value = message;
+
+    // Submit the form
+    document.getElementById('submitButton').click();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kung Fu Panda 4</title>
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+  max-width: 100vw;
+  overflow-y: auto; /* Make the page scrollable */
+  padding-top: 5px; /* Add padding to fix the first row 5px from the top */
+  height: 100vh; /* Add this line to ensure the container takes the full viewport height */
+}
+
+.sec {
+  background-size: cover;
+  background-position: center;
+  width: calc(25% - 20px);
+  text-align: center;
+  position: relative;
+  border-radius: 30px;
+  transition: all .5s ease-in-out;
+  transform: scale(1);
+  border: 2px solid #999999;
+  margin: 10px;
+}
+
+.sec:hover {
+  transform: scale(0.9);
+}
+
+.bg1 {
+  background-image: url(https://th.bing.com/th/id/OIG2.jx1vXzCw5AOjW0NDuZRi?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+
+.bg2 {
+  background-image: url(https://th.bing.com/th/id/OIG4.X0.kybgTZGaigc9K9MhS?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+
+.bg3 {
+  background-image: url(https://th.bing.com/th/id/OIG1.PPCWfDIrp.JC0ueA6MJV?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg4 {
+  background-image: url(https://th.bing.com/th/id/OIG3.y_gbWeyE6sYp.N4cKdGs?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg5 {
+  background-image: url(https://th.bing.com/th/id/OIG1.ctzpeeRFIPxuaFsrWKPF?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg6 {
+  background-image: url(https://th.bing.com/th/id/OIG2.C5.Ni7AeNJ78vj9o8Nik?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg7 {
+  background-image: url(https://th.bing.com/th/id/OIG4.pB_692BBULx7FFR1S8KQ?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg8 {
+  background-image: url(https://th.bing.com/th/id/OIG3.7xgMdDFjzajPxl4WR2FO?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg9 {
+  background-image: url(https://th.bing.com/th/id/OIG4.OHt7nBxVcKJ4ShYKi9fR?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg10 {
+  background-image: url(https://th.bing.com/th/id/OIG2.UigWLofC7zejdk4oK7Pg?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg11 {
+  background-image: url(https://th.bing.com/th/id/OIG4.Yx4r2zb97kURZZFrZLf7?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.bg12 {
+  background-image: url(https://th.bing.com/th/id/OIG4.WoJX8FPVpKU3f9KJhAtx?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn);
+}
+.sec img {
+  width: 100%;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.sec h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  z-index: 9;
+  transition: all .5s ease-in-out;
+}
+
+.sec:hover h1 {
+  transform: scale(1.4);
+}
+
+.sec:hover img {
+  transform: scale(1.4);
+  opacity: 1;
+}
+
+@media (max-width: 769px) {
+  .sec {
+    width: calc(20% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    height: auto;
+    overflow: unset;
+  }
+
+  .sec {
+    width: calc(40% - 20px);
+  }
+
+  .sec:hover img {
+    transform: scale(1.2);
+  }
+
+  .sec:hover h1 {
+    transform: scale(1);
+  }
+}
+#submitButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submitButton:hover {
+    background-color: #45a049;
+}
+
+</style>
+</head>
+<body>
+
+<div class="main">
+    <div class="sec bg1 btn" onclick="submitForm('Kung fu panda Date on March 8')">
+        <h1 class="title">March 8</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg2 btn onclick="submitForm('Kung fu panda Date on March 9')">
+        <h1 class="title">March 9</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg3 onclick="submitForm('Kung fu panda Date on March 10')">
+        <h1 class="title">March 10</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg4 btn onclick="submitForm('Kung fu panda Date on March 11')">
+        <h1 class="title">March 11</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg5 btn" onclick="submitForm('Kung fu panda Date on March 12')">
+        <h1 class="title">March 12</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg6 btn" onclick="submitForm('Kung fu panda Date on March 13')">
+        <h1 class="title">March 13</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg7 btn" onclick="submitForm('Kung fu panda Date on March 14')">
+        <h1 class="title">March 14</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg8 btn onclick="submitForm('Kung fu panda Date on March 15')">
+        <h1 class="title">March 15</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg9 btn onclick="submitForm('Kung fu panda Date on March 16')">
+        <h1 class="title">March 16</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg10 btn" onclick="submitForm('Kung fu panda Date on March 17')">
+        <h1 class="title">March 17</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg11 btn" onclick="submitForm('Kung fu panda Date on March 18')">
+        <h1 class="title">March 18</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+    <div class="sec bg12 btn" onclick="submitForm('Kung fu panda Date on March 19')">
+        <h1 class="title">March 19</h1>
+        <img src="https://lh6.googleusercontent.com/-_ASksv5DrxQ/TyQ6X4zG_7I/AAAAAAAAECg/WmVfMzj9l3Y/s1600/transparent.png">
+    </div>
+</div>
+
+<form action="https://formcarry.com/s/h5D1vtZAV24" method="POST" enctype="multipart/form-data" id="myForm">
+    <input type="hidden" name="name" id="fc-generated-1-name" />
+    <input type="hidden" name="email" id="fc-generated-1-email" />
+    <input type="hidden" name="message" id="fc-generated-1-message" />
+
+    <button type="submit" id="submitButton" style="display: none;"></button>
+</form>
+
+<script>
+    function handleButtonClick(name, message) {
+        // Set form values based on the button clicked
+        document.getElementById('fc-generated-1-name').value = name;
+        document.getElementById('fc-generated-1-email').value = name.toLowerCase().replace(/\s/g, '') + '@example.com';
+        document.getElementById('fc-generated-1-message').value = message;
+
+        // Trigger form submission
+        document.getElementById('submitButton').click();
+    }
+
+    function submitForm(message) {
+        // Set form values based on the button clicked
+        document.getElementById('fc-generated-1-name').value = 'Default Name';
+        document.getElementById('fc-generated-1-email').value = 'default@example.com';
+        document.getElementById('fc-generated-1-message').value = message;
+
+        // Trigger form submission
+        document.getElementById('submitButton').click();
+    }
+</script>
+
+</body>
+</html>
